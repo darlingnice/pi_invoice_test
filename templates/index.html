@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Invoice</title>
+
+   <script src="https://cdn.socket.io/4.3.2/socket.io.min.js"></script>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 40px; }
+    .invoice-box { max-width: 800px; margin: auto; border: 1px solid #eee; padding: 20px; }
+    h1, h2 { margin: 0; }
+    table { width: 100%; border-collapse: collapse; margin-top: 20px; }
+    table th, table td { border: 1px solid #ddd; padding: 8px; text-align: left; }
+    table th { background: #f2f2f2; }
+    .totals td { font-weight: bold; }
+    .right { text-align: right; }
+    .signature-box { margin-top: 40px; text-align: left; }
+    .signature-box img { width: 200px; height: 80px; border: 1px solid #ccc; }
+    .signature-label { margin-bottom: 5px; font-weight: bold; }
+  </style>
+</head>
+<body>
+
+  <div class="invoice-box">
+    <h1>Add2CartCourier Company</h1>
+    <p>123 MCC Road <br>Aba , Nigeria</p>
+
+    <h2>Invoice</h2>
+    <p><strong>Invoice #:</strong> 001<br>
+       <strong>Date:</strong> 24 Aug 2025<br>
+       <strong>Due Date:</strong> 31 Aug 2025</p>
+
+    <p><strong>Billed To:</strong><br>
+       Joy Eze<br>
+       joyeze@gmail.com</p>
+
+    <table>
+      <tr>
+        <th>Description</th>
+        <th>Qty</th>
+        <th>Unit Price</th>
+        <th>Total</th>
+      </tr>
+      <tr>
+        <td>Website Design</td>
+        <td>1</td>
+        <td>#500</td>
+        <td class="right">#500</td>
+      </tr>
+      <tr>
+        <td>Hosting (3 months)</td>
+        <td>3</td>
+        <td>#20</td>
+        <td class="right">#60</td>
+      </tr>
+      <tr class="totals">
+        <td colspan="3" class="right">Subtotal</td>
+        <td class="right">#560</td>
+      </tr>
+      <tr class="totals">
+        <td colspan="3" class="right">Tax (10%)</td>
+        <td class="right">#56</td>
+      </tr>
+      <tr class="totals">
+        <td colspan="3" class="right">Total</td>
+        <td class="right">#616</td>
+      </tr>
+    </table>
+
+    <p><strong>Notes:</strong><br>
+    Thank you for your business! Payment is due within 7 days.</p>
+
+    <!-- Signature Section -->
+    <div class="signature-box">
+      <div class="signature-label">Authorized Signature:</div>
+      <p>{{ signature }}</p>
+      <img  src="" alt="Signature will appear here" id="signature">
+    </div>
+  </div>
+   <script src="{{ url_for('static', filename='js/send-signature.js') }}"></script>
+</body>
+</html>
